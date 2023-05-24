@@ -1,0 +1,18 @@
+{
+  "data_name": "msra",
+  "model_dir": "./model_hub/chinese-alpaca-7b",
+  "lora_r": 8,
+  "max_seq_length": 192,
+  "instruct_column": "instruct",
+  "query_column": "query",
+  "response_column": "answer",
+  "train_path": "data/msra/instruct_data/train.txt",
+  "dev_path": "data/msra/instruct_data/dev.txt",
+  "train_batch_size": 12,
+  "gradient_accumulation_steps": 1,
+  "save_dir": "./checkpoint/msra/train_deepspeed/adapter_model/",
+  "num_train_epochs": 1,
+  "local_rank": 0,
+  "log_steps": 10,
+  "save_steps": 400
+}
