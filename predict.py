@@ -8,7 +8,6 @@ from torch.utils.data import DataLoader
 from dataset import load_data, NerCollate
 from transformers import LlamaForCausalLM, LlamaTokenizer
 from config_utils import ConfigParser
-from decode_utils import get_entities
 from peft import get_peft_model, LoraConfig, TaskType, PeftModel
 
 data_name = "msra"
