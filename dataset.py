@@ -49,13 +49,13 @@ class NerCollate:
             if input is not None and input != "":
                 instruction = instruction + '\n' + input
             source = prompt.format_map({'instruction': instruction})
-            target = f"{output}{self.tokenizer.eos_token}"
+            target = f"{self.tokenizer.bos_token}{output}{self.tokenizer.eos_token}"
 
             # print(json.dumps(source, ensure_ascii=False), json.dumps(target, ensure_ascii=False))
             sources.append(source)
             targets.append(target)
 
-        tokenized_sources = self.tokenizer(sources, return_attention_mask=False)
+        tokenized_sources = self.tokenizer(sources, return_attention_mask=False, add_special_tokens=False)
         tokenized_targets = self.tokenizer(targets, return_attention_mask=False, add_special_tokens=False)
         # print(tokenized_sources)
         # print(tokenized_targets)
@@ -70,6 +70,7 @@ class NerCollate:
             labels = ([IGNORE_INDEX] * len(s) + t)[:self.max_seq_length]
             assert len(input_ids) == len(labels)
             input_ids = input_ids + [self.tokenizer.pad_token_id] * (self.max_seq_length - len(input_ids))
+            labels[-1] = IGNORE_INDEX
             labels = labels + [IGNORE_INDEX] * (self.max_seq_length - len(labels))
             # print(input_ids)
             # print(labels)
