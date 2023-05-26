@@ -87,7 +87,7 @@ torch=2.0.0
 
 1、data下新建数据集，用process.py处理数据为instruct_data下的数据。
 
-2、这里使用train_trainer.py进行训练，为了能够让transformers的Trainer在训练的过程中保存lora权重，对Trainer进行相应的修改，参考：https://github.com/huggingface/peft/issues/96 。因为有了config_utils.py，我们可以在字典里面定义相关参数，然后可以在命令行修改桉树的值（嵌套参数之间用_分隔）。
+2、这里使用train_trainer.py进行训练，为了能够让transformers的Trainer在训练的过程中保存lora权重，对Trainer进行相应的修改，参考：https://github.com/huggingface/peft/issues/96 。因为有了config_utils.py，我们可以在字典里面定义相关参数，然后可以在命令行修改参数的值（嵌套参数之间用_分隔）。
 
 ```python
 args = {
