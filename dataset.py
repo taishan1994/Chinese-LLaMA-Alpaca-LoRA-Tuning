@@ -70,7 +70,6 @@ class NerCollate:
             labels = ([IGNORE_INDEX] * len(s) + t)[:self.max_seq_length]
             assert len(input_ids) == len(labels)
             input_ids = input_ids + [self.tokenizer.pad_token_id] * (self.max_seq_length - len(input_ids))
-            labels[-1] = IGNORE_INDEX
             labels = labels + [IGNORE_INDEX] * (self.max_seq_length - len(labels))
             # print(input_ids)
             # print(labels)
